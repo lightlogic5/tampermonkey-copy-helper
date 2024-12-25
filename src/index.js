@@ -276,7 +276,10 @@ function handleClick(e) {
     alert("复制 markdown 成功");
   }
   if (target.className.includes("js-download-md")) {
-    const md = getMd();
+    let url = window.location.href;
+    url = `[文章链接](${url})  \n`
+    let md = getMd();
+    md = `${url}${md}`
     const h1 = document.querySelector("h1");
     const title = h1 ? h1.innerText + ".md" : "H1 is null.md";
     downLoad(title, md);
